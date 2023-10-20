@@ -17,6 +17,12 @@
             <tr>
                 <td>${car.id}</td>
                 <td>${car.name}</td>
+                <td>
+                    <form action="/delete-car" method="post">
+                        <input type="hidden" id="id" name="id" value="${car.id}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
     </table>
