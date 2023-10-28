@@ -1,5 +1,6 @@
 package br.com.carstore.dao;
 
+import br.com.carstore.config.ConnectionPoolConfig;
 import br.com.carstore.model.Car;
 
 import java.sql.Connection;
@@ -18,7 +19,7 @@ public class CarDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             System.out.println("success in database connection");
 
@@ -45,7 +46,7 @@ public class CarDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             System.out.println("success in database connection");
 
@@ -88,7 +89,7 @@ public class CarDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             System.out.println("success in database connection");
 
@@ -114,7 +115,7 @@ public class CarDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             System.out.println("success in database connection");
 

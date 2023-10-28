@@ -1,4 +1,7 @@
 <html>
+    <head>
+        <title>CarStore</title>
+    </head>
 <body>
 <h2>Create Car</h2>
 
