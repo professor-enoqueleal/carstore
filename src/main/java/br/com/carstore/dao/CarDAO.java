@@ -60,6 +60,9 @@ public class CarDAO {
 
                 Car car = new Car();
 
+                String id = resultSet.getString("id");
+                car.setId(id);
+
                 String name = resultSet.getString("name");
                 car.setName(name);
 
