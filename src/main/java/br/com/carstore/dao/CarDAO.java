@@ -87,5 +87,30 @@ public class CarDAO {
 
     }
 
+    public void deleteById(String id) {
+
+        String SQL = "DELETE CAR WHERE ID = ?";
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+
+            System.out.println("Conexão com DB estabelecida com sucesso");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+
+            connection.close();
+
+            System.out.println("Carro removido com sucesso do db!");
+
+        } catch (Exception e) {
+
+            System.out.println("Falha ao deletar o veículo do db: " + e.getMessage());
+
+        }
+
+    }
 
 }
