@@ -14,7 +14,7 @@ public class CarDAO {
 
     public void createCar(Car car) {
 
-        String SQL = "INSERT INTO CAR (NAME) VALUES (?)";
+        String SQL = "INSERT INTO CAR (NAME, COLOR) VALUES (?, ?)";
 
         try {
 
@@ -25,6 +25,7 @@ public class CarDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
             preparedStatement.setString(1, car.getName());
+            preparedStatement.setString(2, car.getColor());
 
             preparedStatement.execute();
 
@@ -65,6 +66,9 @@ public class CarDAO {
 
                 String name = resultSet.getString("name");
                 car.setName(name);
+
+                String color = resultSet.getString("color");
+                car.setColor(color);
 
                 cars.add(car);
 
@@ -108,6 +112,35 @@ public class CarDAO {
         } catch (Exception e) {
 
             System.out.println("Falha ao deletar o veículo do db: " + e.getMessage());
+
+        }
+
+    }
+
+    public void updateCar(Car car) {
+
+        String SQL = "UPDATE CAR SET NAME = ?, SET COLOR = ? WHERE ID = ?";
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setString(1, car.getName());
+            preparedStatement.setString(2, car.getId());
+            preparedStatement.execute();
+
+            System.out.println("success in update car");
+
+            connection.close();
+
+        } catch (Exception e) {
+
+            System.out.println("fail in database connection");
+            System.out.println("Error: " + e.getMessage());
 
         }
 
